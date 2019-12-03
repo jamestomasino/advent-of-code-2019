@@ -39,12 +39,6 @@ package body Bounds is
     end Update_D;
 
   begin
-    -- These are placeholders so the 'out' doesn't get annoyed with me
-    Max_R := 1;
-    Max_L := 1;
-    Max_U := 1;
-    Max_D := 1;
-
     -- Loop over the path array and check each direction to see which way we're moving
     for I in Path'Range loop
       Direction := Path(I);
@@ -58,7 +52,7 @@ package body Bounds is
         when 'L'    => Update_L(T);
         when 'U'    => Update_U(T);
         when 'D'    => Update_D(T);
-        when others => -- handle these later
+        when others => -- skip
           null;
       end case;
     end loop;
