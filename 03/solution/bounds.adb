@@ -1,8 +1,9 @@
+with Ada.Strings;
+
 package body Bounds is
   procedure Get_Bounds (Path: in Path_Array; Max_R: out Integer; Max_L: out Integer; Max_U: out Integer; Max_D: out Integer) is
     Current_X : Integer := 0;
     Current_Y : Integer := 0;
-    Direction : String(1..7);
     H : Character;
     T : Integer;
 
@@ -41,9 +42,8 @@ package body Bounds is
   begin
     -- Loop over the path array and check each direction to see which way we're moving
     for I in Path'Range loop
-      Direction := Path(I);
-      H := Direction(1);
-      T := Integer'Value(Direction(2..7));
+      H := To_String(Path(I))(1);
+      T := Integer'Value(Slice(Path(I), 2, Length(Path(I))));
       case H is
         -- Get the first character to indicate direction.
         -- Look at the remaining chars as integers and move "current" that way
