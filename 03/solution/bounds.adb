@@ -41,6 +41,10 @@ package body Bounds is
 
   begin
     -- Loop over the path array and check each direction to see which way we're moving
+    Max_R := 0;
+    Max_L := 0;
+    Max_U := 0;
+    Max_D := 0;
     for I in Path'Range loop
       H := To_String(Path(I))(1);
       T := Integer'Value(Slice(Path(I), 2, Length(Path(I))));
